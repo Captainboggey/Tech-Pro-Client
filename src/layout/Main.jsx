@@ -1,9 +1,14 @@
-import { Outlet } from "react-router-dom"
+import React from 'react';
+import Navbar from '../Components/Navbar';
+import { Outlet } from 'react-router-dom';
 
-const Main =()=>{
-    return(
-        <Outlet></Outlet>
-    )
-}
+const main = () => {
+    return (
+        <div className='font-bebas'>
+            <Navbar></Navbar>
+            <Outlet></Outlet>
+        </div>
+    );
+};
 
-export default Main;
+export default main;
