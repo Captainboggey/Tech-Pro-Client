@@ -1,26 +1,55 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FcGoogle } from 'react-icons/fc';
+import { IoLogoGithub } from 'react-icons/io';
+import { AuthContext } from '../Providers/AuthProvider';
 
 const Login = () => {
-    return (
-        <div className="hero bg-base-200 min-h-screen">
-  <div className="hero-content ">
-    
-    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-      <div className="card-body">
-      <h2 className="text-left my-5 text-xl font-bold">Login</h2>
-        <fieldset className="fieldset">
-          <label className="fieldset-label">Email</label>
-          <input type="email" className="input" placeholder="Email" />
-          <label className="fieldset-label">Password</label>
-          <input type="password" className="input" placeholder="Password" />
-          <div><a className="link link-hover">Forgot password?</a></div>
-          <button className="btn btn-neutral mt-4">Login</button>
-        </fieldset>
+  const {signInWithEmail}= useContext(AuthContext)
+  const handleLogin= e=>{
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const logInInfo={email,password}
+    console.log(logInInfo)
+    signInWithEmail(email,password)
+    .then(res=>console.log(res))
+    .catch(error=>console.error(error))
+
+  }
+  return (
+    <div className="hero  min-h-screen">
+      <div className=" ">
+
+        <div className="  lg:w-96  shrink-0 ">
+          <div className="card-body  ">
+            <h2 className="text-left my-5 text-2xl ">Login</h2>
+            <button className='btn  bg-transparent w-full gap-2 border-none '><FcGoogle /> Continue with Google</button>
+            <button className='btn  bg-transparent w-full gap-2 border-none '><IoLogoGithub /> Continue with Github</button>
+            
+            
+              <form onSubmit={handleLogin} className='space-y-2'>
+              
+                <div className='form-control'>
+                <label className="fieldset-label">Email</label>
+                <input name='email' type="email" className="input w-full " placeholder="Email" />
+                </div>
+                <div className='form-control'>
+                <label className="fieldset-label">Password</label>
+                <input name='password' type="password" className="input w-full" placeholder="Password" />
+                </div>
+
+                <div className='form-control'>
+                <input type="submit" className='btn btn-neutral w-full mt-4' value="Login" />
+                </div>
+                
+              </form>
+            
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-    );
+  );
 };
 
 export default Login;
