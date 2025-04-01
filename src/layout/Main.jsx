@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 
 const main = () => {
     return (
-        <div className='font-bebas'>
+        <div className='font-inter'>
             <Navbar></Navbar>
             <Outlet></Outlet>
         </div>

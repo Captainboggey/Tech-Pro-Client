@@ -1,4 +1,5 @@
 import React from 'react';
+import { CiLogin } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -8,7 +9,7 @@ const Navbar = () => {
      <Link><li><h1>Become a tutor</h1></li></Link>
     </>
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar bg-pink-400 text-black shadow-sm">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -16,7 +17,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-white rounded-box z-1 mt-3 w-52 p-2 shadow">
                         {navLinks}
                         
                     </ul>
@@ -32,7 +33,7 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-end">
-                <a className="btn">Login</a>
+               <Link to={'/login'}> <h2 className="btn md:px-8 text-black bg-transparent border-1 text-center gap-3 "><CiLogin /> Login</h2></Link>
             </div>
         </div>
     );
