@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { IoLogoGithub } from 'react-icons/io';
 import { AuthContext } from '../Providers/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const {signInWithEmail}= useContext(AuthContext)
@@ -21,7 +22,7 @@ const Login = () => {
     <div className="hero  min-h-screen">
       <div className=" ">
 
-        <div className="  lg:w-96  shrink-0 ">
+        <div className="  lg:w-96  shrink-0 shadow-lg bg-base-300 rounded-lg">
           <div className="card-body  ">
             <h2 className="text-left my-5 text-2xl ">Login</h2>
             <button className='btn  bg-transparent w-full gap-2 border-none '><FcGoogle /> Continue with Google</button>
@@ -41,6 +42,7 @@ const Login = () => {
 
                 <div className='form-control'>
                 <input type="submit" className='btn btn-neutral w-full mt-4' value="Login" />
+                <h2 className='mt-5'>New Here? <Link to={'/register'} className='text-red-500'> Register</Link> First</h2>
                 </div>
                 
               </form>
