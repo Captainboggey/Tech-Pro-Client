@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { IoLogoGithub } from 'react-icons/io';
 import { AuthContext } from '../Providers/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 const Login = () => {
-  const {signInWithEmail}= useContext(AuthContext)
+  const {signInWithEmail,signInWithGoogle,signInWithGit,user}= useContext(AuthContext)
+
   const handleLogin= e=>{
     e.preventDefault();
     const form = e.target;
@@ -14,9 +15,22 @@ const Login = () => {
     const logInInfo={email,password}
     console.log(logInInfo)
     signInWithEmail(email,password)
-    .then(res=>console.log(res))
+    .then(res=>{
+      console.log(res)
+      
+    })
     .catch(error=>console.error(error))
 
+  }
+  const handleGoogle=()=>{
+    signInWithGoogle()
+    .then(res=>console.log(res))
+    .catch(error=>console.error(error))
+  }
+  const handleGit=()=>{
+     signInWithGit()
+     .then(res=>console.log(res))
+     .catch(error=>console.error(error))
   }
   return (
     <div className="hero  min-h-screen">
@@ -25,8 +39,8 @@ const Login = () => {
         <div className="  lg:w-96  shrink-0 shadow-lg bg-base-300 rounded-lg">
           <div className="card-body  ">
             <h2 className="text-left my-5 text-2xl ">Login</h2>
-            <button className='btn  bg-transparent w-full gap-2 border-none '><FcGoogle /> Continue with Google</button>
-            <button className='btn  bg-transparent w-full gap-2 border-none '><IoLogoGithub /> Continue with Github</button>
+            <button onClick={handleGoogle} className='btn  bg-transparent w-full gap-2 border-none '><FcGoogle /> Continue with Google</button>
+            <button onClick={handleGit} className='btn  bg-transparent w-full gap-2 border-none '><IoLogoGithub /> Continue with Github</button>
             
             
               <form onSubmit={handleLogin} className='space-y-2'>
@@ -51,6 +65,7 @@ const Login = () => {
         </div>
       </div>
     </div>
+   
   );
 };
 

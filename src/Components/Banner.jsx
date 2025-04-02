@@ -13,7 +13,9 @@ const Banner = () => {
                     <img src={woman} className='lg:absolute rounded-lg mt-4 lg:mt-0  md:w-52 bottom-1 left-1' alt="" />
                 </div>
                 <div>
-                    <h1 className="text-5xl font-bold">Learn faster with the <br /> best1-on-1 language <br />tutor for you </h1>
+                    <h1 className="text-5xl font-bold">Learn faster
+with your best
+language tutor. </h1>
                     <p className="py-6">
                        Take online lessons tailored to your level, budget and schedule
                     </p>

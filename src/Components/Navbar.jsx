@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { CiLogin } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Providers/AuthProvider';
 
 const Navbar = () => {
+    const{logout,user}=useContext(AuthContext)
     const navLinks=<>
      <Link><li><h1>Find Tutors</h1></li></Link>
      <Link><li><h1>For Business</h1></li></Link>
-     <Link><li><h1>Become a tutor</h1></li></Link>
+     <Link to={'/becomeTutor'}><li><h1>Become a tutor</h1></li></Link>
     </>
+    const handleLogout=()=>{
+        return logout()
+        .then(res=>console.log(res))
+        .catch(error=>console.error(error))
+    }
     return (
         <div className="navbar bg-pink-400 text-black shadow-sm">
             <div className="navbar-start">
@@ -22,7 +29,7 @@ const Navbar = () => {
                         
                     </ul>
                 </div>
-                <div className='lg:flex navbar'><a className="btn btn-ghost text-xl font-bungee">Tech Pro</a>
+                <div className='lg:flex navbar'><Link to={'/'}><h2 className="btn btn-ghost text-xl font-bungee">Tech Pro</h2></Link>
                     <div className=" hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
                             {navLinks}
@@ -33,7 +40,9 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-end">
-               <Link to={'/login'}> <h2 className="btn md:px-8 text-black bg-transparent border-1 text-center gap-3 "><CiLogin /> Login</h2></Link>
+               {
+                user?<Link to={'/login'}> <h2 onClick={handleLogout} className="btn md:px-8 text-black bg-transparent border-1 text-center gap-3 "><CiLogin /> Logout</h2></Link>:<Link to={'/login'}> <h2 className="btn md:px-8 text-black bg-transparent border-1 text-center gap-3 "><CiLogin /> Login</h2></Link>
+               }
             </div>
         </div>
     );
