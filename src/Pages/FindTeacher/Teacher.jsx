@@ -2,9 +2,10 @@ import React from 'react';
 import { FaBook, FaStar } from 'react-icons/fa';
 import { LuLanguages } from 'react-icons/lu';
 import { RiGraduationCapLine } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 
 const Teacher = ({ teacher }) => {
-    const {name,tagOne,tagTwo,flag,star,review,lessons,amount,duration,language,pp,description,email}=teacher
+    const {name,tagOne,tagTwo,flag,star,review,lessons,amount,duration,language,pp,description,email,_id}=teacher
     return (
         <div className="card card-side bg-base-100 shadow-sm">
             <figure className='md:w-40 w-28 rounded-none'>
@@ -49,7 +50,7 @@ const Teacher = ({ teacher }) => {
                 </div>
                 <p>{description}</p>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary bg-pink-500 px-16 border-none">Book</button>
+                    <Link to={`/book/${_id}`}><button className="btn btn-primary bg-pink-500 px-16 border-none">Book</button></Link>
                 </div>
             </div>
         </div>

@@ -12,8 +12,8 @@ const Navbar = () => {
     </>
     const handleLogout=()=>{
         return logout()
-        .then(res=>console.log(res))
-        .catch(error=>console.error(error))
+        .then()
+        .catch()
     }
     return (
         <div className="navbar bg-pink-400 text-black shadow-sm">
