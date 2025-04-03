@@ -4,6 +4,7 @@ import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import BecomeTutor from "../Pages/BecomeTutor";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
 
@@ -22,7 +23,7 @@ const router= createBrowserRouter([
             element:<Register></Register>
         },{
             path:'/becomeTutor',
-            element:<BecomeTutor></BecomeTutor>
+            element:<PrivateRoute><BecomeTutor></BecomeTutor></PrivateRoute>
         }]
         
         

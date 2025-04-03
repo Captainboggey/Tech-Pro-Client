@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../Providers/AuthProvider';
+import axios from 'axios';
 
 const BecomeTutor = () => {
+  const {user}= useContext(AuthContext)
   const handleAssignInfo = e =>{
     e.preventDefault();
     const form = e.target;
@@ -16,7 +19,12 @@ const BecomeTutor = () => {
     const language = form.language.value;
     const pp =  form.pp.value;
     const description = form.description.value;
-    
+    const email = user?.email;
+    const teacherInfo ={name,tagOne,tagTwo,flag,star,review,lessons,amount,duration,language,pp,description,email};
+    console.log(teacherInfo)
+    axios.post('http://localhost:4000/becomeTeacher',teacherInfo)
+    .then(res=>console.log(res.data))
+    .catch(error=>console.log(error))
   }
     return (
       <div className="hero bg-base-200 min-h-screen">
@@ -24,7 +32,7 @@ const BecomeTutor = () => {
     <div className="text-center lg:text-left"></div>
     <h2 className="text-center text-2xl">Become a Tutor today!</h2>
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-      <form className="card-body">
+      <form onSubmit={handleAssignInfo} className="card-body">
         <div className='grid grid-cols-2 gap-3'>
         <div className="form-control">
           <label className="label">

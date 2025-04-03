@@ -2,10 +2,12 @@ import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { IoLogoGithub } from 'react-icons/io';
 import { AuthContext } from '../Providers/AuthProvider';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const {signInWithEmail,signInWithGoogle,signInWithGit,user}= useContext(AuthContext)
+  const location = useLocation()
+  const navigate = useNavigate()
 
   const handleLogin= e=>{
     e.preventDefault();
@@ -17,6 +19,8 @@ const Login = () => {
     signInWithEmail(email,password)
     .then(res=>{
       console.log(res)
+
+      navigate(location?location.state:'/')
       
     })
     .catch(error=>console.error(error))
