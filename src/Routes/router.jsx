@@ -5,6 +5,7 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import BecomeTutor from "../Pages/BecomeTutor";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import FindTeacher from "../Pages/FindTeacher/FindTeacher";
 
 
 
@@ -24,6 +25,10 @@ const router= createBrowserRouter([
         },{
             path:'/becomeTutor',
             element:<PrivateRoute><BecomeTutor></BecomeTutor></PrivateRoute>
+        },{
+            path:'/findTutor',
+            element:<FindTeacher></FindTeacher>,
+            loader:()=> fetch('http://localhost:4000/becomeTeacher')
         }]
         
         
