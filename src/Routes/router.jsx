@@ -29,11 +29,15 @@ const router= createBrowserRouter([
         },{
             path:'/findTutor',
             element:<FindTeacher></FindTeacher>,
-            loader:()=> fetch('http://localhost:4000/becomeTeacher')
+            loader:()=> fetch(`http://localhost:4000/becomeTeacher`)
         },{
             path:'/book/:id',
             element:<PrivateRoute><Book></Book>,</PrivateRoute>,
             loader:({params})=> fetch(`http://localhost:4000/becomeTeacher/${params.id}`)
+        },{
+            path:'/findTutor/:id',
+            element:<FindTeacher></FindTeacher>,
+            loader:({params})=> fetch(`http://localhost:4000/becomeTeacher?language=${params.id}`)
         }]
         
         

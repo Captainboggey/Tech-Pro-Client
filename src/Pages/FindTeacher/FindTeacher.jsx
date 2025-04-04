@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import teacher from "../../../public/MatcherSemHero.c1a6f64d.avif"
 import { useLoaderData } from 'react-router-dom';
 import Teacher from './Teacher';
 
 const FindTeacher = () => {
-    const teachers = useLoaderData()
+   const teachers = useLoaderData()
+    
     return (
         <div>
             <div className="hero bg-base-200 min-h-screen">
