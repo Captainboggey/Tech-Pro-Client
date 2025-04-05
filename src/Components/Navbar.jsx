@@ -7,7 +7,8 @@ const Navbar = () => {
     const{logout,user}=useContext(AuthContext)
     const navLinks=<>
      <Link to={'/findTutor'}><li><h1>Find Tutors</h1></li></Link>
-     <Link><li><h1>For Business</h1></li></Link>
+     <Link to={'/myTutorials'}><li><h1>My Tutorial</h1></li></Link>
+     <Link><li><h1>My Booked Tutorial</h1></li></Link>
      <Link to={'/becomeTutor'}><li><h1>Become a tutor</h1></li></Link>
     </>
     const handleLogout=()=>{
